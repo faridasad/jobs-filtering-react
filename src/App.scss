@@ -5,218 +5,287 @@ $color-filter-tablets: hsl(180, 31%, 95%);
 $color-badge-primary: hsl(180, 8%, 52%);
 $color-badge-secondary: hsl(180, 14%, 20%);
 $base-font-size: 15px;
-$font-family: 'League Spartan', sans-serif;
+$font-family: "League Spartan", sans-serif;
 $font-semi-bold: 500;
 $font-bold: 700;
 /* VARIABLES */
 
-*, *::after, *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: $font-family;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
 }
 
 .main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .header {
     width: 100%;
-    min-height: 100vh;
+    height: 156px;
+    background: $color-primary url("./assets/images/bg-header-desktop.svg")
+      center;
+  }
+
+  .container {
+    width: 80%;
+    padding: 4rem 0;
+    position: relative;
+  }
+
+  .filter-wrapper {
+    width: 100%;
+    background-color: $color-filter-tablets;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: -30px;
 
-    .header {
-        width: 100%;
-        height: 156px;
-        background: $color-primary url("./assets/images/bg-header-desktop.svg") center;
+    ul {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      li:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $color-primary;
+        font-weight: $font-semi-bold;
+
+        span {
+          border-bottom-right-radius: 5px;
+          border-top-right-radius: 5px;
+          background-color: $color-primary;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.45rem;
+          cursor: pointer;
+        }
+      }
     }
-
-    .container {
-        width: 80%;
-        padding: 3rem 0;
-        position: relative;
+    .button-reset {
+      background-color: transparent;
+      color: $color-primary;
+      cursor: pointer;
+      border: none;
+      font-size: $base-font-size;
+      position: relative;
     }
+    .button-reset::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 0%;
+      background-color: $color-primary;
+      transition: 0.15s width;
+    }
+    .button-reset:hover::before {
+      width: 100%;
+    }
+  }
 
-    .filter-wrapper {
+  .jobs {
+
+    transition: .3s all;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+
+      &-item.featured {
+        border-left: 4px solid $color-primary;
+      }
+
+      &-item {
         width: 100%;
-        height: 60px;
-        background-color: $color-filter-tablets;
-        padding: 1rem 2rem;
-        border-radius: 5px;
+        list-style: none;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: absolute;
-        top: -30px;
+        background-color: $color-filter-tablets;
+        border-radius: 7px;
+        padding: 1rem 2rem;
+        box-shadow: 0px 1px 5px hsl(180, 29%, 50%);
+        position: relative;
 
-        ul {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        .left {
+          display: flex;
+          align-items: center;
+          gap: 1em;
 
-            li {
-                display: flex;
-                align-items: center;
-                gap: .5rem;
-                color: $color-primary;
-                font-weight: $font-semi-bold;
-
-                span {
-                    border-radius: 2px;
-                    background-color: $color-primary;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: .3rem;
-                }
-            }
-        }
-        .button-reset {
-            background-color: transparent;
-            color: $color-primary;
-            cursor: pointer;
-            border: none;
-            font-size: $base-font-size;
-            position: relative;
-        }
-        .button-reset::before {
-            position: absolute;
-            content: '';
-            left: 0;
-            bottom: 0;
-            height: 1px;
-            width: 0%;
-            background-color: $color-primary;
-            transition: .15s width;
-        }
-        .button-reset:hover::before {
-            width: 100%;
-        }
-        
-    }
-
-    .jobs {
-
-        &-list {
+          .details {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1em;
-            
-            &-item.featured {
-                border-left: 4px solid $color-primary;
-            }
-    
-            &-item {
-                width: 100%;
-                list-style: none;
+            gap: 0.5em;
+
+            &-header {
+              display: flex;
+              align-items: center;
+              gap: 0.5em;
+
+              .company {
+                font-weight: $font-bold;
+                color: $color-primary;
+              }
+
+              .badge {
+                color: #fff;
+                font-size: 11px;
+                font-weight: $font-bold;
+                padding: 0.4em 0.5em;
+                border-radius: 10px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                background-color: $color-filter-tablets; 
-                border-radius: 7px;
-                padding: 1rem 2rem;
-                box-shadow: 0px 1px 5px hsl(180, 29%, 50%);
-                position: relative;
-    
-    
-                .left {
-                    display: flex;
-                    align-items: center;
-                    gap: 1em;
-    
-    
-                    img {
-                        width: 88px;
-                        aspect-ratio: 1 / 1;
-                        border-radius: 50%;
-                    }
-                    .details {
-                        display: flex;
-                        flex-direction: column;
-                        gap: .5em;
-    
-                        &-header {
-                            display: flex;
-                            align-items: center;
-                            gap: .5em;
-    
-                            .company {
-                                font-weight: $font-bold;
-                                color: $color-primary;
-                            }
-    
-                            .badge {
-                                color: #fff;
-                                font-size: 11px;
-                                font-weight: $font-semi-bold;
-                                padding: .45em;
-                                border-radius: 10px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                            }
-                            .badge-primary {
-                                background-color: $color-primary;
-                            }
-                            .badge-secondary {
-                                background-color: $color-badge-secondary;
-                            }
-                        }
-    
-                        .position {
-                            font-weight: $font-bold;
-                            cursor: pointer;
-                            transition: .3s ease color;
-                        }
-                        .position:hover {
-                            color: $color-primary;
-                        }
-                    }
-                    .alt-texts {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: 1em;
-                        font-size: 12px;
-    
-                        p {
-                            opacity: .8;
-                        }
-                    }
-                }
-    
-                .right {
-    
-                    .tags {
-                        display: flex;
-                        align-items: center;
-                        gap: 1.5em;
-    
-    
-    
-                        .tag {
-                            color: $color-primary;
-                            font-weight: $font-bold;
-                            padding: .4em;
-                            cursor: pointer;
-                            border-radius: 3px;
-                            transition: .3s ease background-color;
-                        }
-    
-                        .tag:hover {
-                            background-color: $color-primary;
-                            color: #fff;
-                        }
-                        
-                    }
-                }
-    
+                justify-content: center;
+              }
+              .badge-primary {
+                background-color: $color-primary;
+              }
+              .badge-secondary {
+                background-color: $color-badge-secondary;
+              }
             }
+
+            .position {
+              font-size: 18px;
+              font-weight: $font-bold;
+              cursor: pointer;
+              transition: 0.3s ease color;
+            }
+            .position:hover {
+              color: $color-primary;
+            }
+          }
+          .alt-texts {
+            display: flex;
+            align-items: center;
+
+            gap: 0.7em;
+            font-size: 12px;
+
+            p,
+            span {
+              opacity: 0.7;
+            }
+          }
         }
+
+        .divider {
+          height: 1px;
+          width: 100%;
+          background-color: $color-badge-secondary;
+          opacity: 0.3;
+          display: none;
+        }
+
+        .right {
+          .tags {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5em;
+            transition: 0.2s gap;
+
+            .tag {
+              color: $color-primary;
+              font-weight: $font-bold;
+              padding: 0.4em;
+              cursor: pointer;
+              border-radius: 3px;
+              transition: 0.3s ease background-color;
+            }
+
+            .tag:hover {
+              background-color: $color-primary;
+              color: #fff;
+            }
+          }
+        }
+      }
     }
-    
+  }
 }
 
+@media screen and (max-width: 63.75rem) {
+  .main .jobs-list-item .right .tags {
+    gap: 0.5em;
+  }
+}
+@media screen and (max-width: 59.375rem) {
+  .main .jobs-list-item .right .tags {
+    gap: 0.25em;
+  }
+}
+@media screen and (max-width: 56.25rem) {
+  .main {
+    .jobs.filter-active {
+        padding: 3rem 0;
+    }
 
+    .filter-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .filter-wrapper ul li:not(:last-child) {
+        margin-right: .5rem;
+    }
+
+    .jobs-list {
+      gap: 3rem;
+      transition: 0.3s all;
+
+      &-item {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        padding: 1rem 1.375rem;
+        gap: 1.5rem;
+
+        .divider {
+          display: block;
+        }
+
+        .left {
+          margin-top: 1.375rem;
+
+          img {
+            width: 2.75rem;
+            aspect-ratio: 1 / 1;
+            position: absolute;
+            top: -1.375rem;
+            left: 1.375rem;
+          }
+          .details {
+            gap: 0.7rem;
+
+            .alt-texts {
+              gap: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
