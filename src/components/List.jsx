@@ -29,11 +29,14 @@ function List({ items, handleClick, filters }) {
               <p className="position">{item.position}</p>
               <div className="alt-texts">
                 <p className="posted-at">{item.postedAt}</p>
+                <span>&bull;</span>
                 <p className="contract">{item.contract}</p>
+                <span>&bull;</span>
                 <p className="location">{item.location}</p>
               </div>
             </div>
           </div>
+          <div className="divider"></div>
           <div className="right">
             <div className="tags">
               <p className="tag" onClick={() => handleClick(item.role)}>
