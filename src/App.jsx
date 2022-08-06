@@ -25,10 +25,9 @@ function App() {
                 <li
                   key={index}
                   className="filter-item"
-                  onClick={() => deleteFilter(index)}
                 >
                   {filter}{" "}
-                  <span>
+                  <span onClick={() => deleteFilter(index)}>
                     <img src="./src/assets/images/icon-remove.svg" alt="a" />
                   </span>
                 </li>
@@ -39,7 +38,7 @@ function App() {
             </button>
           </div>
         )}
-        <div className="jobs">
+        <div className={"jobs " + (filters.length > 0 && "filter-active")}>
           <ul className="jobs-list">
             <List items={items} handleClick={handleClick} filters={filters} />
           </ul>
