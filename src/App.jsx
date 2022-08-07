@@ -28,7 +28,7 @@ function App() {
                 >
                   {filter}{" "}
                   <span onClick={() => deleteFilter(index)}>
-                    <img src="./src/assets/images/icon-remove.svg" alt="a" />
+                    <img src="./src/images/icon-remove.svg" alt="a" />
                   </span>
                 </li>
               ))}
